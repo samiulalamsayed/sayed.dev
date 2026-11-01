@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
+/* ===== Dark Theme Variables (Silver & Electric Indigo) ===== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  /* নতুন থিমের মেইন ব্যাকগ্রাউন্ড */
+  --background: #05070E;
+  --foreground: #f8fafc;
+  
+  /* কার্ড এবং পপ-আপের ব্যাকগ্রাউন্ড */
+  --surface: #0A0D16;
+  --secondary: #94a3b8; /* slate-400 */
+  
+  /* নতুন থিমের অ্যাকসেন্ট কালার (Indigo-500) */
+  --accent: #6366f1;
+  --border: rgba(255, 255, 255, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===== Global Reset ===== */
+
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* মোবাইলে হরাইজন্টাল স্ক্রল বন্ধ করার জন্য */
+}
+
+/* ===== Text Selection ===== */
+
+::selection {
+  background: rgba(99, 102, 241, 0.3); /* টেক্সট সিলেক্ট করলে সুন্দর ইন্ডিগো গ্লো আসবে */
+  color: white;
+}
+
+/* ===== Custom Scrollbar (Premium Look) ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155; /* slate-700 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ===== Accessibility ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
